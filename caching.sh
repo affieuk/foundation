@@ -21,7 +21,6 @@ mkdir -p ${CI_PROJECT_DIR}/cache
 if [ "${GIT_CACHE}" == "true" ] ; then
   mkdir -p ${CI_PROJECT_DIR}/cache/git_cache
   echo "git_cache_dir '${CI_PROJECT_DIR}/cache/git_cache'" >> chef-foundation/omnibus.rb
-  echo "use_git_caching true" >> chef-foundation/omnibus.rb
 else
   echo "git cache has been disabled"
 fi

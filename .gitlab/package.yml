@@ -8,7 +8,7 @@
     - cd chef-foundation
     - mkdir ${CI_PROJECT_DIR}/data
     - mv -v pkg/cinc* ${CI_PROJECT_DIR}/data/
-    - cp ../VERSION ${CI_PROJECT_DIR}/
+    - cp VERSION ${CI_PROJECT_DIR}/
   cache:
     paths:
       - cache/*
@@ -42,7 +42,7 @@
   script:
     - source /Users/omnibus/load-omnibus-toolchain.sh
     - bash caching.sh
-    - cd chef
+    - cd chef-foundation
     - bundle config set --local path ${CI_PROJECT_DIR}/bundle/vendor
     - bundle config set --local without 'development'
     - bundle install
