@@ -1,0 +1,7 @@
+/bundle/*
+/cache/*
+/chef*
+/data/*
+inspec.lock
+junit.xml
+/source/*
