@@ -18,7 +18,6 @@
 
 TOP_DIR="$(pwd)"
 export CI_PROJECT_DIR=${CI_PROJECT_DIR:-${TOP_DIR}}
-export OMNIBUS_USE_INTERNAL_SOURCES="false"
 source /home/omnibus/load-omnibus-toolchain.sh
 set -ex
 bash caching.sh

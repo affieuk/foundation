@@ -2,7 +2,7 @@
 .test:
   stage: test
   script:
-    - ./chef-foundation/omnibus-test.sh
+    - ./scripts/omnibus-test.sh
 
 .test:amazonlinux:
   extends: .test
@@ -29,7 +29,7 @@
   extends: .test
   script:
     - sudo scripts/install-cinc-macos.sh
-    - ./chef-foundation/omnibus-test.sh
+    - ./scripts/omnibus-test.sh
     - sudo scripts/uninstall-cinc-macos.sh
 
 .test:opensuse:
@@ -52,6 +52,6 @@
     - $ErrorActionPreference = "Stop"
     - $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
     - echo $env:PATH
-    - ./chef-foundation/omnibus-test.ps1
+    - ./scripts/omnibus-test.ps1
   after_script:
     - ./scripts/uninstall-cinc.ps1
