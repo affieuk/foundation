@@ -25,6 +25,15 @@
   after_script:
     - apt-get -y remove cinc-foundation
 
+.test:freebsd:
+  extends: .test
+  before_script:
+    - sudo sh data/freebsd/${PLATFORM_VER}/cinc-foundation*.sh
+  script:
+    - /usr/local/bin/bash ./scripts/omnibus-test.sh
+  after_script:
+    - sudo rm -rf /opt/cinc
+
 .test:macos:
   extends: .test
   script:
