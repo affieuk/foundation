@@ -38,7 +38,7 @@ $version=(&"$embedded_bin_dir\openssl.exe" version)
 If ($lastexitcode -ne 0) { Throw $lastexitcode }
 
 Write-Host ":lock: Validating OpenSSL executable"
-Start-Process -NoNewWindow -Wait "$embedded_bin_dir\openssl.exe" -ArgumentList "sha3-512" -RedirectStandardInput ".\LICENSE"  -PassThru
+Start-Process -NoNewWindow -Wait "$embedded_bin_dir\openssl.exe" -ArgumentList "sha3-512" -RedirectStandardInput ".\README.md"  -PassThru
 If ($lastexitcode -ne 0) {
     Write-Host "sha3 failed"
     Throw $lastexitcode
@@ -54,7 +54,7 @@ If ($env:OMNIBUS_FIPS_MODE -eq $true) {
     Write-Host "FIPS is enabled for this environment"
     Write-Host ":closed_lock_with_key: Validating FIPS"
 
-    Start-Process -NoNewWindow -Wait "$embedded_bin_dir\openssl.exe" -ArgumentList "md5" -RedirectStandardInput ".\LICENSE"  -PassThru
+    Start-Process -NoNewWindow -Wait "$embedded_bin_dir\openssl.exe" -ArgumentList "md5" -RedirectStandardInput ".\README.md"  -PassThru
     If ($lastexitcode -eq 0) {
         # the md5 hash _should_ error
         Write-Host "openssl executable still allow md5"

@@ -48,7 +48,7 @@ echo ":lock: Checking OpenSSL version"
 "$EMBEDDED_BIN_DIR/openssl" version # ensure openssl command works
 
 echo "Validating that OpenSSL does not error with SHA3"
-"$EMBEDDED_BIN_DIR/openssl" sha3-512 < ./LICENSE
+"$EMBEDDED_BIN_DIR/openssl" sha3-512 < ./README.md
 
 export PATH=$EMBEDDED_BIN_DIR:$PATH
 if [ "$OMNIBUS_FIPS_MODE" = "true" ]
@@ -74,7 +74,7 @@ then
   "$EMBEDDED_BIN_DIR/openssl" list -providers # fips should be a provider here
 
   echo ":closed_lock_with_key: Checking FIPS mode"
-  "$EMBEDDED_BIN_DIR/openssl" md5 < ./LICENSE
+  "$EMBEDDED_BIN_DIR/openssl" md5 < ./README.md
 
   if [ $? -eq 0 ]
   then
