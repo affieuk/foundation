@@ -99,40 +99,9 @@ package:amazonlinux-2023:aarch64:
     PLATFORM_VER: "2023"
     OMNIBUS_FIPS_MODE: "false"
 
-package:centos-7:x86_64:
-  extends: .package:centos
-  image: cincproject/omnibus-centos:7
-  cache:
-    key: centos:7:x86_64
-  tags:
-    - docker-x86_64
-  variables:
-    PLATFORM_VER: "7"
-
-package:centos-7:aarch64:
-  extends: .package:centos
-  image: cincproject/omnibus-centos:7
-  cache:
-    key: centos:7:aarch64
-  tags:
-    - docker-aarch64
-  variables:
-    PLATFORM_VER: "7"
-    OMNIBUS_FIPS_MODE: "false"
-
-package:centos-7:ppc64le:
-  extends: .package:centos
-  image: cincproject/omnibus-centos:7
-  cache:
-    key: centos:7:ppc64le
-  tags:
-    - docker-ppc64le
-  variables:
-    PLATFORM_VER: "7"
-
 package:centos-8:x86_64:
   extends: .package:centos
-  image: cincproject/omnibus-centos-stream:8
+  image: cincproject/omnibus-almalinux:8
   cache:
     key: centos-stream:8:x86_64
   tags:
@@ -142,7 +111,7 @@ package:centos-8:x86_64:
 
 package:centos-8:aarch64:
   extends: .package:centos
-  image: cincproject/omnibus-centos-stream:8
+  image: cincproject/omnibus-almalinux:8
   cache:
     key: centos-stream:8:aarch64
   tags:
@@ -153,7 +122,7 @@ package:centos-8:aarch64:
 
 package:centos-8:ppc64le:
   extends: .package:centos
-  image: cincproject/omnibus-centos-stream:8
+  image: cincproject/omnibus-almalinux:8
   cache:
     key: centos-stream:8:ppc64le
   tags:
@@ -163,7 +132,7 @@ package:centos-8:ppc64le:
 
 package:centos-9:x86_64:
   extends: .package:centos
-  image: cincproject/omnibus-centos-stream:9
+  image: cincproject/omnibus-almalinux:9
   cache:
     key: centos-stream:9:x86_64
   tags:
@@ -173,7 +142,7 @@ package:centos-9:x86_64:
 
 package:centos-9:aarch64:
   extends: .package:centos
-  image: cincproject/omnibus-centos-stream:9
+  image: cincproject/omnibus-almalinux:9
   cache:
     key: centos-stream:9:aarch64
   tags:
@@ -184,7 +153,7 @@ package:centos-9:aarch64:
 
 package:centos-9:ppc64le:
   extends: .package:centos
-  image: cincproject/omnibus-centos-stream:9
+  image: cincproject/omnibus-almalinux:9
   cache:
     key: centos-stream:9:ppc64le
   tags:
@@ -201,27 +170,6 @@ package:debian-9:x86_64:
     - docker-x86_64
   variables:
     PLATFORM_VER: "9"
-
-package:debian-10:x86_64:
-  extends: .package:debian
-  image: cincproject/omnibus-debian:10
-  cache:
-    key: debian:10:x86_64
-  tags:
-    - docker-x86_64
-  variables:
-    PLATFORM_VER: "10"
-
-package:debian-10:aarch64:
-  extends: .package:debian
-  image: cincproject/omnibus-debian:10
-  cache:
-    key: debian:10:aarch64
-  tags:
-    - docker-aarch64
-  variables:
-    PLATFORM_VER: "10"
-    OMNIBUS_FIPS_MODE: "false"
 
 package:debian-11:x86_64:
   extends: .package:debian
@@ -575,39 +523,9 @@ test:amazonlinux-2023:aarch64:
   variables:
     PLATFORM_VER: "2023"
 
-test:centos-7:x86_64:
-  extends: .test:centos
-  image: cincproject/omnibus-centos:7
-  needs:
-    - package:centos-7:x86_64
-  tags:
-    - docker-x86_64
-  variables:
-    PLATFORM_VER: "7"
-
-test:centos-7:aarch64:
-  extends: .test:centos
-  image: cincproject/omnibus-centos:7
-  needs:
-    - package:centos-7:aarch64
-  tags:
-    - docker-aarch64
-  variables:
-    PLATFORM_VER: "7"
-
-test:centos-7:ppc64le:
-  extends: .test:centos
-  image: cincproject/omnibus-centos:7
-  needs:
-    - package:centos-7:ppc64le
-  tags:
-    - docker-ppc64le
-  variables:
-    PLATFORM_VER: "7"
-
 test:centos-8:x86_64:
   extends: .test:centos
-  image: cincproject/omnibus-centos-stream:8
+  image: cincproject/omnibus-almalinux:8
   needs:
     - package:centos-8:x86_64
   tags:
@@ -617,7 +535,7 @@ test:centos-8:x86_64:
 
 test:centos-8:aarch64:
   extends: .test:centos
-  image: cincproject/omnibus-centos-stream:8
+  image: cincproject/omnibus-almalinux:8
   needs:
     - package:centos-8:aarch64
   tags:
@@ -627,7 +545,7 @@ test:centos-8:aarch64:
 
 test:centos-8:ppc64le:
   extends: .test:centos
-  image: cincproject/omnibus-centos-stream:8
+  image: cincproject/omnibus-almalinux:8
   needs:
     - package:centos-8:ppc64le
   tags:
@@ -637,7 +555,7 @@ test:centos-8:ppc64le:
 
 test:centos-9:x86_64:
   extends: .test:centos
-  image: cincproject/omnibus-centos-stream:9
+  image: cincproject/omnibus-almalinux:9
   needs:
     - package:centos-9:x86_64
   tags:
@@ -647,7 +565,7 @@ test:centos-9:x86_64:
 
 test:centos-9:aarch64:
   extends: .test:centos
-  image: cincproject/omnibus-centos-stream:9
+  image: cincproject/omnibus-almalinux:9
   needs:
     - package:centos-9:aarch64
   tags:
@@ -657,7 +575,7 @@ test:centos-9:aarch64:
 
 test:centos-9:ppc64le:
   extends: .test:centos
-  image: cincproject/omnibus-centos-stream:9
+  image: cincproject/omnibus-almalinux:9
   needs:
     - package:centos-9:ppc64le
   tags:
@@ -674,26 +592,6 @@ test:debian-9:x86_64:
     - docker-x86_64
   variables:
     PLATFORM_VER: "9"
-
-test:debian-10:x86_64:
-  extends: .test:debian
-  image: cincproject/omnibus-debian:10
-  needs:
-    - package:debian-10:x86_64
-  tags:
-    - docker-x86_64
-  variables:
-    PLATFORM_VER: "10"
-
-test:debian-10:aarch64:
-  extends: .test:debian
-  image: cincproject/omnibus-debian:10
-  needs:
-    - package:debian-10:aarch64
-  tags:
-    - docker-aarch64
-  variables:
-    PLATFORM_VER: "10"
 
 test:debian-11:x86_64:
   extends: .test:debian
@@ -1027,9 +925,6 @@ deploy:
     - package:amazonlinux-2:x86_64
     - package:amazonlinux-2023:x86_64
     - package:amazonlinux-2023:aarch64
-    - package:centos-7:aarch64
-    - package:centos-7:ppc64le
-    - package:centos-7:x86_64
     - package:centos-8:aarch64
     - package:centos-8:ppc64le
     - package:centos-8:x86_64
@@ -1037,8 +932,6 @@ deploy:
     - package:centos-9:ppc64le
     - package:centos-9:x86_64
     - package:debian-9:x86_64
-    - package:debian-10:aarch64
-    - package:debian-10:x86_64
     - package:debian-11:aarch64
     - package:debian-11:x86_64
     - package:debian-12:aarch64
