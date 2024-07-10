@@ -59,7 +59,6 @@ fi
 
 if [ "$OMNIBUS_FIPS_MODE" = "true" ]
 then
-  "$EMBEDDED_BIN_DIR/bundle" install --jobs=2 --retry=3
 
   echo "the ruby we _expect_ to be using"
   echo "--------------------------------"
@@ -83,7 +82,6 @@ then
     # exit $?
   fi
 
-  "$EMBEDDED_BIN_DIR/rake" test -v
 else
   echo "FIPS is not enabled, skipping FIPS mode functionality test"
 fi

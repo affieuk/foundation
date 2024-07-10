@@ -57,27 +57,6 @@ package:source:
     paths:
       - source/*
 
-package:amazonlinux-2:x86_64:
-  extends: .package:amazonlinux
-  image: cincproject/omnibus-amazonlinux:2
-  cache:
-    key: amazonlinux:2:x86_64
-  tags:
-    - docker-x86_64
-  variables:
-    PLATFORM_VER: "2"
-
-package:amazonlinux-2:aarch64:
-  extends: .package:amazonlinux
-  image: cincproject/omnibus-amazonlinux:2
-  cache:
-    key: amazonlinux:2:aarch64
-  tags:
-    - docker-aarch64
-  variables:
-    PLATFORM_VER: "2"
-    OMNIBUS_FIPS_MODE: "false"
-
 package:amazonlinux-2023:x86_64:
   extends: .package:amazonlinux
   image: cincproject/omnibus-amazonlinux:2023
@@ -482,26 +461,6 @@ package:ubuntu-24.04:aarch64:
   variables:
     PLATFORM_VER: "24.04"
     OMNIBUS_FIPS_MODE: "false"
-
-test:amazonlinux-2:x86_64:
-  extends: .test:amazonlinux
-  image: cincproject/omnibus-amazonlinux:2
-  needs:
-    - package:amazonlinux-2:x86_64
-  tags:
-    - docker-x86_64
-  variables:
-    PLATFORM_VER: "2"
-
-test:amazonlinux-2:aarch64:
-  extends: .test:amazonlinux
-  image: cincproject/omnibus-amazonlinux:2
-  needs:
-    - package:amazonlinux-2:aarch64
-  tags:
-    - docker-aarch64
-  variables:
-    PLATFORM_VER: "2"
 
 test:amazonlinux-2023:x86_64:
   extends: .test:amazonlinux
@@ -921,8 +880,6 @@ deploy:
     - docker-x86_64
   dependencies:
     - package:source
-    - package:amazonlinux-2:aarch64
-    - package:amazonlinux-2:x86_64
     - package:amazonlinux-2023:x86_64
     - package:amazonlinux-2023:aarch64
     - package:centos-8:aarch64
