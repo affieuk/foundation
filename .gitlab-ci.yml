@@ -481,6 +481,7 @@ test:amazonlinux-2023:aarch64:
     - docker-aarch64-v8.2-a
   variables:
     PLATFORM_VER: "2023"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:centos-8:x86_64:
   extends: .test:centos
@@ -501,6 +502,7 @@ test:centos-8:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "8"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:centos-8:ppc64le:
   extends: .test:centos
@@ -541,6 +543,7 @@ test:centos-9:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "9"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:centos-9:ppc64le:
   extends: .test:centos
@@ -591,6 +594,7 @@ test:debian-11:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "11"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:debian-12:x86_64:
   extends: .test:debian
@@ -611,6 +615,7 @@ test:debian-12:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "12"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:freebsd-13:
   extends: .test:freebsd
@@ -620,6 +625,7 @@ test:freebsd-13:
     - freebsd-13
   variables:
     PLATFORM_VER: "13"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:macos-10.15:
   extends: .test:macos
@@ -629,6 +635,7 @@ test:macos-10.15:
     - macos-10.15
   variables:
     PLATFORM_VER: "10.15"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:macos-11:
   extends: .test:macos
@@ -638,6 +645,7 @@ test:macos-11:
     - macos-11
   variables:
     PLATFORM_VER: "11"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:macos-12:
   extends: .test:macos
@@ -647,6 +655,7 @@ test:macos-12:
     - macos-12
   variables:
     PLATFORM_VER: "12"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:macos-12:aarch64:
   extends: .test:macos
@@ -656,6 +665,7 @@ test:macos-12:aarch64:
     - macos-12-aarch64
   variables:
     PLATFORM_VER: "12"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:macos-13:
   extends: .test:macos
@@ -664,6 +674,7 @@ test:macos-13:
   tags:
     - macos-13
   variables:
+    OMNIBUS_FIPS_MODE: "false"
     PLATFORM_VER: "13"
 
 test:macos-13:aarch64:
@@ -674,6 +685,7 @@ test:macos-13:aarch64:
     - macos-13-aarch64
   variables:
     PLATFORM_VER: "13"
+    OMNIBUS_FIPS_MODE: "false"
 
 # test:macos-14:
 #   extends: .test:macos
@@ -683,6 +695,7 @@ test:macos-13:aarch64:
 #     - macos-14
 #   variables:
 #     PLATFORM_VER: "14"
+#     OMNIBUS_FIPS_MODE: "false"
 #
 # test:macos-14:aarch64:
 #   extends: .test:macos
@@ -692,6 +705,7 @@ test:macos-13:aarch64:
 #     - macos-14-aarch64
 #   variables:
 #     PLATFORM_VER: "14"
+#     OMNIBUS_FIPS_MODE: "false"
 
 test:opensuse-15:x86_64:
   extends: .test:opensuse
@@ -712,6 +726,7 @@ test:opensuse-15:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "15"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:rockylinux-8:x86_64:
   extends: .test:rockylinux
@@ -732,6 +747,7 @@ test:rockylinux-8:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "8"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:rockylinux-9:x86_64:
   extends: .test:rockylinux
@@ -752,6 +768,7 @@ test:rockylinux-9:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "9"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:ubuntu-18.04:x86_64:
   extends: .test:ubuntu
@@ -772,6 +789,7 @@ test:ubuntu-18.04:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "18.04"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:ubuntu-20.04:x86_64:
   extends: .test:ubuntu
@@ -792,6 +810,7 @@ test:ubuntu-20.04:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "20.04"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:ubuntu-22.04:x86_64:
   extends: .test:ubuntu
@@ -812,6 +831,7 @@ test:ubuntu-22.04:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "22.04"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:ubuntu-24.04:x86_64:
   extends: .test:ubuntu
@@ -832,6 +852,7 @@ test:ubuntu-24.04:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "24.04"
+    OMNIBUS_FIPS_MODE: "false"
 
 test:sources:
   image: cincproject/docker-auditor
