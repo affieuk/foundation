@@ -97,9 +97,4 @@ If ($env:OMNIBUS_FIPS_MODE -eq $true) {
     Write-Host "FIPS is disabled for this environment"
 }
 
-If ((Get-Command "openssl.exe").Source -ne "$embedded_bin_dir\openssl.exe") {
-    Write-Host "The default openssl.exe is at: $((Get-Command "openssl.exe").Source),"
-    Write-Host "which has version $((Get-Command "openssl.exe").FileVersionInfo.FileVersion)"
-}
-
 Start-Process -NoNewWindow -Wait "$embedded_bin_dir\rake.bat" -ArgumentList "test", "-v" -PassThru

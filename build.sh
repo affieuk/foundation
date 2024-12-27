@@ -16,11 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TOP_DIR="$(pwd)"
-export CI_PROJECT_DIR=${CI_PROJECT_DIR:-${TOP_DIR}}
 source /home/omnibus/load-omnibus-toolchain.sh
 set -ex
-bash caching.sh
+mkdir -p ${CI_PROJECT_DIR}/cache/git_cache
+echo "cache_dir '${CI_PROJECT_DIR}/cache'" >> chef-foundation/omnibus.rb
+echo "git_cache_dir '${CI_PROJECT_DIR}/cache/git_cache'" >> chef-foundation/omnibus.rb
+echo "use_git_caching true" >> chef-foundation/omnibus.rb
 cd chef-foundation
 bundle config set --local path ${CI_PROJECT_DIR}/bundle/vendor
 bundle config set --local without 'development'
