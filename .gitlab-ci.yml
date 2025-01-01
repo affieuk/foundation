@@ -61,7 +61,7 @@ package:amazonlinux-2023:x86_64:
   extends: .package:amazonlinux
   image: cincproject/omnibus-amazonlinux:2023
   cache:
-    key: amazonlinux:2034:x86_64
+    key: amazonlinux-2023-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -71,7 +71,7 @@ package:amazonlinux-2023:aarch64:
   extends: .package:amazonlinux
   image: cincproject/omnibus-amazonlinux:2023
   cache:
-    key: amazonlinux:2034:aarch64
+    key: amazonlinux-2023-aarch64
   tags:
     - docker-aarch64-v8.2-a
   variables:
@@ -82,7 +82,7 @@ package:centos-8:x86_64:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:8
   cache:
-    key: centos-stream:8:x86_64
+    key: centos-8-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -92,7 +92,7 @@ package:centos-8:aarch64:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:8
   cache:
-    key: centos-stream:8:aarch64
+    key: centos-8-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -103,7 +103,7 @@ package:centos-8:ppc64le:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:8
   cache:
-    key: centos-stream:8:ppc64le
+    key: centos-8-ppc64le
   tags:
     - docker-ppc64le
   variables:
@@ -113,7 +113,7 @@ package:centos-8:s390x:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:8
   cache:
-    key: centos:8:s390x
+    key: centos-8-s390x
   tags:
     - docker-s390x
   needs:
@@ -125,7 +125,7 @@ package:centos-9:x86_64:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:9
   cache:
-    key: centos-stream:9:x86_64
+    key: centos-9-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -135,7 +135,7 @@ package:centos-9:aarch64:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:9
   cache:
-    key: centos-stream:9:aarch64
+    key: centos-9-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -146,7 +146,7 @@ package:centos-9:ppc64le:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:9
   cache:
-    key: centos-stream:9:ppc64le
+    key: centos-9-ppc64le
   tags:
     - docker-ppc64le-p9
   variables:
@@ -156,7 +156,7 @@ package:centos-9:s390x:
   extends: .package:centos
   image: cincproject/omnibus-almalinux:9
   cache:
-    key: centos:9:s390x
+    key: centos-9-s390x
   tags:
     - docker-s390x
   needs:
@@ -164,21 +164,54 @@ package:centos-9:s390x:
   variables:
     PLATFORM_VER: "9"
 
-package:debian-9:x86_64:
-  extends: .package:debian
-  image: cincproject/omnibus-debian:9
+package:centos-10:x86_64:
+  extends: .package:centos
+  image: cincproject/omnibus-almalinux:10-kitten
   cache:
-    key: debian:9:x86_64
+    key: centos-10-x86_64
   tags:
-    - docker-x86_64
+    - docker-x86_64-v3
   variables:
-    PLATFORM_VER: "9"
+    PLATFORM_VER: "10"
+
+package:centos-10:aarch64:
+  extends: .package:centos
+  image: cincproject/omnibus-almalinux:10-kitten
+  cache:
+    key: centos-10-aarch64
+  tags:
+    - docker-aarch64
+  variables:
+    PLATFORM_VER: "10"
+    OMNIBUS_FIPS_MODE: "false"
+
+package:centos-10:ppc64le:
+  extends: .package:centos
+  image: cincproject/omnibus-almalinux:10-kitten
+  cache:
+    key: centos-10-ppc64le
+  tags:
+    - docker-ppc64le-p9
+  variables:
+    PLATFORM_VER: "10"
+
+package:centos-10:s390x:
+  extends: .package:centos
+  image: cincproject/omnibus-almalinux:10-kitten
+  cache:
+    key: centos-10-s390x
+  tags:
+    - docker-s390x
+  needs:
+    - patch
+  variables:
+    PLATFORM_VER: "10"
 
 package:debian-11:x86_64:
   extends: .package:debian
   image: cincproject/omnibus-debian:11
   cache:
-    key: debian:11:x86_64
+    key: debian-11-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -188,7 +221,7 @@ package:debian-11:aarch64:
   extends: .package:debian
   image: cincproject/omnibus-debian:11
   cache:
-    key: debian:11:aarch64
+    key: debian-11-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -199,7 +232,7 @@ package:debian-12:x86_64:
   extends: .package:debian
   image: cincproject/omnibus-debian:12
   cache:
-    key: debian:12:x86_64
+    key: debian-12-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -209,17 +242,28 @@ package:debian-12:aarch64:
   extends: .package:debian
   image: cincproject/omnibus-debian:12
   cache:
-    key: debian:12:aarch64
+    key: debian-12-aarch64
   tags:
     - docker-aarch64
   variables:
     PLATFORM_VER: "12"
     OMNIBUS_FIPS_MODE: "false"
 
+package:debian-13:riscv64:
+  extends: .package:debian
+  image: cincproject/omnibus-debian:13
+  cache:
+    key: debian-13-riscv64
+  tags:
+    - docker-riscv64
+  variables:
+    PLATFORM_VER: "13"
+    OMNIBUS_FIPS_MODE: "false"
+
 package:freebsd-13:
   extends: .package:freebsd
   cache:
-    key: freebsd:13
+    key: freebsd-13
   tags:
     - freebsd-13
   variables:
@@ -229,7 +273,7 @@ package:freebsd-13:
 package:macos-10.15:
   extends: .package:macos
   cache:
-    key: macos:10.15
+    key: macos-10.15
   tags:
     - macos-10.15
   variables:
@@ -239,7 +283,7 @@ package:macos-10.15:
 package:macos-11:
   extends: .package:macos
   cache:
-    key: macos:11
+    key: macos-11
   tags:
     - macos-11
   variables:
@@ -249,7 +293,7 @@ package:macos-11:
 package:macos-12:
   extends: .package:macos
   cache:
-    key: macos:12
+    key: macos-12
   tags:
     - macos-12
   variables:
@@ -259,7 +303,7 @@ package:macos-12:
 package:macos-12:aarch64:
   extends: .package:macos
   cache:
-    key: macos:12:aarch64
+    key: macos-12-aarch64
   tags:
     - macos-12-aarch64
   variables:
@@ -269,7 +313,7 @@ package:macos-12:aarch64:
 package:macos-13:
   extends: .package:macos
   cache:
-    key: macos:13
+    key: macos-13
   tags:
     - macos-13
   variables:
@@ -279,7 +323,7 @@ package:macos-13:
 package:macos-13:aarch64:
   extends: .package:macos
   cache:
-    key: macos:13:aarch64
+    key: macos-13-aarch64
   tags:
     - macos-13-aarch64
   variables:
@@ -289,7 +333,7 @@ package:macos-13:aarch64:
 # package:macos-14:
 #   extends: .package:macos
 #   cache:
-#     key: macos:14
+#     key: macos-14
 #   tags:
 #     - macos-14
 #   variables:
@@ -299,7 +343,7 @@ package:macos-13:aarch64:
 # package:macos-14:aarch64:
 #   extends: .package:macos
 #   cache:
-#     key: macos:14:aarch64
+#     key: macos-14-aarch64
 #   tags:
 #     - macos-14-aarch64
 #   variables:
@@ -308,9 +352,9 @@ package:macos-13:aarch64:
 
 package:opensuse-15:x86_64:
   extends: .package:opensuse
-  image: cincproject/omnibus-opensuse:15.2
+  image: cincproject/omnibus-opensuse:15
   cache:
-    key: opensuse:15:x86_64
+    key: opensuse-15-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -318,29 +362,29 @@ package:opensuse-15:x86_64:
 
 package:opensuse-15:aarch64:
   extends: .package:opensuse
-  image: cincproject/omnibus-opensuse:15.2
+  image: cincproject/omnibus-opensuse:15
   cache:
-    key: opensuse:15:aarch64
+    key: opensuse-15-aarch64
   tags:
     - docker-aarch64
   variables:
     PLATFORM_VER: "15"
     OMNIBUS_FIPS_MODE: "false"
 
-package:windows-2012r2:
+package:windows-2016:
   extends: .package:windows
   cache:
-    key: windows-2012r2
+    key: windows-2016
   tags:
-    - windows-x64-ucrt64
+    - windows-2016
   variables:
-    PLATFORM_VER: "2012r2"
+    PLATFORM_VER: "2016"
 
 package:rockylinux-8:x86_64:
   extends: .package:rockylinux
   image: cincproject/omnibus-rockylinux:8
   cache:
-    key: rockylinux:8:x86_64
+    key: rockylinux-8-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -350,7 +394,7 @@ package:rockylinux-8:aarch64:
   extends: .package:rockylinux
   image: cincproject/omnibus-rockylinux:8
   cache:
-    key: rockylinux:8:aarch64
+    key: rockylinux-8-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -361,7 +405,7 @@ package:rockylinux-9:x86_64:
   extends: .package:rockylinux
   image: cincproject/omnibus-rockylinux:9
   cache:
-    key: rockylinux:9:x86_64
+    key: rockylinux-9-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -371,7 +415,7 @@ package:rockylinux-9:aarch64:
   extends: .package:rockylinux
   image: cincproject/omnibus-rockylinux:9
   cache:
-    key: rockylinux:9:aarch64
+    key: rockylinux-9-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -382,7 +426,7 @@ package:ubuntu-18.04:x86_64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:18.04
   cache:
-    key: ubuntu:18.04:x86_64
+    key: ubuntu-18.04-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -392,7 +436,7 @@ package:ubuntu-18.04:aarch64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:18.04
   cache:
-    key: ubuntu:18.04:aarch64
+    key: ubuntu-18.04-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -403,7 +447,7 @@ package:ubuntu-20.04:x86_64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:20.04
   cache:
-    key: ubuntu:20.04:x86_64
+    key: ubuntu-20.04-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -413,7 +457,7 @@ package:ubuntu-20.04:aarch64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:20.04
   cache:
-    key: ubuntu:20.04:aarch64
+    key: ubuntu-20.04-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -424,7 +468,7 @@ package:ubuntu-22.04:x86_64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:22.04
   cache:
-    key: ubuntu:22.04:x86_64
+    key: ubuntu-22.04-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -434,7 +478,7 @@ package:ubuntu-22.04:aarch64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:22.04
   cache:
-    key: ubuntu:22.04:aarch64
+    key: ubuntu-22.04-aarch64
   tags:
     - docker-aarch64
   variables:
@@ -445,7 +489,7 @@ package:ubuntu-24.04:x86_64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:24.04
   cache:
-    key: ubuntu:24.04:x86_64
+    key: ubuntu-24.04-x86_64
   tags:
     - docker-x86_64
   variables:
@@ -455,9 +499,20 @@ package:ubuntu-24.04:aarch64:
   extends: .package:ubuntu
   image: cincproject/omnibus-ubuntu:24.04
   cache:
-    key: ubuntu:24.04:aarch64
+    key: ubuntu-24.04-aarch64
   tags:
     - docker-aarch64
+  variables:
+    PLATFORM_VER: "24.04"
+    OMNIBUS_FIPS_MODE: "false"
+
+package:ubuntu-24.04:riscv64:
+  extends: .package:ubuntu
+  image: cincproject/omnibus-ubuntu:24.04
+  cache:
+    key: ubuntu-24.04-riscv64
+  tags:
+    - docker-riscv64
   variables:
     PLATFORM_VER: "24.04"
     OMNIBUS_FIPS_MODE: "false"
@@ -565,15 +620,46 @@ test:centos-9:s390x:
   variables:
     PLATFORM_VER: "9"
 
-test:debian-9:x86_64:
-  extends: .test:debian
-  image: cincproject/omnibus-debian:9
+test:centos-10:x86_64:
+  extends: .test:centos
+  image: cincproject/omnibus-almalinux:10-kitten
   needs:
-    - package:debian-9:x86_64
+    - package:centos-10:x86_64
   tags:
-    - docker-x86_64
+    - docker-x86_64-v3
   variables:
-    PLATFORM_VER: "9"
+    PLATFORM_VER: "10"
+
+test:centos-10:aarch64:
+  extends: .test:centos
+  image: cincproject/omnibus-almalinux:10-kitten
+  needs:
+    - package:centos-10:aarch64
+  tags:
+    - docker-aarch64
+  variables:
+    PLATFORM_VER: "10"
+    OMNIBUS_FIPS_MODE: "false"
+
+test:centos-10:ppc64le:
+  extends: .test:centos
+  image: cincproject/omnibus-almalinux:10-kitten
+  needs:
+    - package:centos-10:ppc64le
+  tags:
+    - docker-ppc64le-p9
+  variables:
+    PLATFORM_VER: "10"
+
+test:centos-10:s390x:
+  extends: .test:centos
+  image: cincproject/omnibus-almalinux:10-kitten
+  needs:
+    - package:centos-10:s390x
+  tags:
+    - docker-s390x
+  variables:
+    PLATFORM_VER: "10"
 
 test:debian-11:x86_64:
   extends: .test:debian
@@ -615,6 +701,17 @@ test:debian-12:aarch64:
     - docker-aarch64
   variables:
     PLATFORM_VER: "12"
+    OMNIBUS_FIPS_MODE: "false"
+
+test:debian-13:riscv64:
+  extends: .test:debian
+  image: cincproject/omnibus-debian:13
+  needs:
+    - package:debian-13:riscv64
+  tags:
+    - docker-riscv64
+  variables:
+    PLATFORM_VER: "13"
     OMNIBUS_FIPS_MODE: "false"
 
 test:freebsd-13:
@@ -854,6 +951,17 @@ test:ubuntu-24.04:aarch64:
     PLATFORM_VER: "24.04"
     OMNIBUS_FIPS_MODE: "false"
 
+test:ubuntu-24.04:riscv64:
+  extends: .test:ubuntu
+  image: cincproject/omnibus-ubuntu:24.04
+  needs:
+    - package:ubuntu-24.04:riscv64
+  tags:
+    - docker-riscv64
+  variables:
+    PLATFORM_VER: "24.04"
+    OMNIBUS_FIPS_MODE: "false"
+
 test:sources:
   image: cincproject/docker-auditor
   stage: test
@@ -868,14 +976,14 @@ test:sources:
     reports:
       junit: junit.xml
 
-test:windows-2012r2:
+test:windows-2016:
   extends: .test:windows
   needs:
-    - package:windows-2012r2
+    - package:windows-2016
   tags:
-    - windows-x64-ucrt64
+    - windows-x64-package-testing
   variables:
-    PLATFORM_VER: "2012r2"
+    PLATFORM_VER: "2016"
 
 # Deploy stage
 
@@ -905,17 +1013,21 @@ deploy:
     - package:amazonlinux-2023:aarch64
     - package:centos-8:aarch64
     - package:centos-8:ppc64le
+    - package:centos-8:s390x
     - package:centos-8:x86_64
     - package:centos-9:aarch64
     - package:centos-9:ppc64le
-    - package:centos-9:x86_64
-    - package:centos-8:s390x
     - package:centos-9:s390x
-    - package:debian-9:x86_64
+    - package:centos-9:x86_64
+    - package:centos-10:aarch64
+    - package:centos-10:ppc64le
+    - package:centos-10:s390x
+    - package:centos-10:x86_64
     - package:debian-11:aarch64
     - package:debian-11:x86_64
     - package:debian-12:aarch64
     - package:debian-12:x86_64
+    - package:debian-13:riscv64
     - package:freebsd-13
     - package:macos-10.15
     - package:macos-11
@@ -939,13 +1051,10 @@ deploy:
     - package:ubuntu-22.04:x86_64
     - package:ubuntu-24.04:aarch64
     - package:ubuntu-24.04:x86_64
-    - package:windows-2012r2
+    - package:ubuntu-24.04:riscv64
+    - package:windows-2016
   script:
-    - ssh cinc@${DOWNLOADS_HOST} "mkdir -p /data/incoming/files/${CHANNEL}/cinc-foundation/$(cat VERSION)"
-    - ssh cinc@${DOWNLOADS_HOST} "mkdir -p /data/incoming/source/${CHANNEL}/cinc-foundation/"
-    - rsync -avH --delete data/ cinc@${DOWNLOADS_HOST}:/data/incoming/files/${CHANNEL}/cinc-foundation/$(cat VERSION)/
-    - rsync -avH --delete source/ cinc@${DOWNLOADS_HOST}:/data/incoming/source/${CHANNEL}/cinc-foundation/
-    - ssh cinc@${DOWNLOADS_HOST} "chmod 755 /data/incoming/files/${CHANNEL}/cinc-foundation/$(cat VERSION)/"
+    - bash deploy.sh
 
 # Publish stage
 
