@@ -13,6 +13,7 @@
     paths:
       - cache/*
       - bundle/vendor/*
+    when: always
   artifacts:
     expire_in: 1mo
     paths:
@@ -41,13 +42,12 @@
   extends: .package
   script:
     - source /home/omnibus/load-omnibus-toolchain.sh
-    - bash caching.sh
     - cd chef-foundation
     - bundle config set --local path ${CI_PROJECT_DIR}/bundle/vendor
     - bundle config set --local without 'development'
     - bundle install
     - sudo rm -rf /var/cache/omnibus/pkg/*
-    - sudo -E bundle exec omnibus build cinc-foundation -l ${OMNIBUS_LOG_LEVEL} --override append_timestamp:false
+    - sudo -E bash -c "source /home/omnibus/load-omnibus-toolchain.sh && bundle exec omnibus build cinc-foundation -l ${OMNIBUS_LOG_LEVEL} --override append_timestamp:false"
     - sudo mkdir -p ${CI_PROJECT_DIR}/data/freebsd/${PLATFORM_VER}
     - sudo mv -v pkg/cinc*sh ${CI_PROJECT_DIR}/data/freebsd/${PLATFORM_VER}/
   after_script:
@@ -60,7 +60,6 @@
   extends: .package
   script:
     - source /Users/omnibus/load-omnibus-toolchain.sh
-    - bash caching.sh
     - cd chef-foundation
     - bundle config set --local path ${CI_PROJECT_DIR}/bundle/vendor
     - bundle config set --local without 'development'
@@ -93,14 +92,9 @@
   script:
     - $ErrorActionPreference = "Stop"
     - C:\omnibus\load-omnibus-toolchain.ps1
-    - bash caching.sh
-    - cd chef-foundation
-    - bundle config set --local path ${CI_PROJECT_DIR}/bundle/vendor
-    - bundle config set --local without 'development'
-    - bundle install
-    - bundle exec omnibus build cinc-foundation -l ${OMNIBUS_LOG_LEVEL} --override append_timestamp:false
+    - bash.exe build-windows.sh
     - mkdir.exe -p ${CI_PROJECT_DIR}/data/windows/${PLATFORM_VER}
-    - mv.exe -v pkg/cinc* ${CI_PROJECT_DIR}/data/windows/${PLATFORM_VER}
+    - mv.exe -v chef-foundation/pkg/cinc* ${CI_PROJECT_DIR}/data/windows/${PLATFORM_VER}
   after_script:
     - $ErrorActionPreference = "Stop"
     - Remove-Item -Recurse -Force C:\cinc-project
