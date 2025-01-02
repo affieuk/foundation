@@ -28,6 +28,10 @@ ln -s 2016 2022
 ln -s 2016 10
 ln -s 2016 11
 cd ${TOP_DIR}
+mkdir -p data/debian/trixie
+cd data/debian/trixie
+ln -s ../13 sid
+cd ${TOP_DIR}
 # Deploy to primary mirror
 ssh cinc@${DOWNLOADS_HOST} "mkdir -p /data/incoming/files/${CHANNEL}/cinc-foundation/$(cat VERSION)"
 ssh cinc@${DOWNLOADS_HOST} "mkdir -p /data/incoming/source/${CHANNEL}/cinc-foundation/"

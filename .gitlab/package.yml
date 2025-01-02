@@ -49,7 +49,7 @@
     - sudo rm -rf /var/cache/omnibus/pkg/*
     - sudo -E bash -c "source /home/omnibus/load-omnibus-toolchain.sh && bundle exec omnibus build cinc-foundation -l ${OMNIBUS_LOG_LEVEL} --override append_timestamp:false"
     - sudo mkdir -p ${CI_PROJECT_DIR}/data/freebsd/${PLATFORM_VER}
-    - sudo mv -v pkg/cinc*sh ${CI_PROJECT_DIR}/data/freebsd/${PLATFORM_VER}/
+    - sudo mv -v pkg/cinc* ${CI_PROJECT_DIR}/data/freebsd/${PLATFORM_VER}/
   after_script:
     - sudo chown -R gitlab-runner cache/ bundle/ data/ chef-foundation/
     - sudo rm -rf /opt/cinc/
