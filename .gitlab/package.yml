@@ -58,20 +58,15 @@
 
 .package:macos:
   extends: .package
+  before_script:
+    - sudo rm -rf /opt/cinc/ /var/cache/omnibus/*
   script:
-    - source /Users/omnibus/load-omnibus-toolchain.sh
-    - cd chef-foundation
-    - bundle config set --local path ${CI_PROJECT_DIR}/bundle/vendor
-    - bundle config set --local without 'development'
-    - bundle install
-    - sudo rm -rf /var/cache/omnibus/pkg/*
-    - sudo -E bundle exec omnibus build cinc-foundation -l ${OMNIBUS_LOG_LEVEL} --override append_timestamp:false
-    - mkdir -p ${CI_PROJECT_DIR}/data/mac_os_x/${PLATFORM_VER}
-    - sudo chown -R omnibus:omnibus pkg
-    - mv -v pkg/cinc*dmg* ${CI_PROJECT_DIR}/data/mac_os_x/${PLATFORM_VER}/
+    - bash build-macos.sh
   after_script:
     - sudo chown -R omnibus cache/ bundle/
-    - sudo rm -rf /opt/cinc/
+    - mkdir -p ${CI_PROJECT_DIR}/data/mac_os_x/${PLATFORM_VER}
+    - sudo mv -v ${CI_PROJECT_DIR}/data/cinc-foundation*dmg* ${CI_PROJECT_DIR}/data/mac_os_x/${PLATFORM_VER}/
+    - sudo rm -rf /opt/cinc/ /var/cache/omnibus/* ${CI_PROJECT_DIR}/data/cinc-foundation*pkg*
   variables:
     OMNIBUS_FIPS_MODE: "false"
 
